@@ -12,7 +12,7 @@ const object={
    
 }
 
-console.log("object ");
+// console.log("object ");
 object.getIntro();
 
 const printName = function () {
@@ -20,7 +20,7 @@ const printName = function () {
 }
 
 //not recommend (avoid using it)
-//what is want to change the prototype of a ojectt
+//what if we is want to change the prototype of a ojectt
 const object2 = {
     name:"chhotu",
 }
@@ -43,7 +43,7 @@ object2.getIntro();
 
 console.log(object2.__proto__);
 
-console.log(printName.call(object2));
+printName.call(object2);
 
 
 Function.prototype.mybind = function () {

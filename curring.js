@@ -63,26 +63,28 @@
 
 // console.log(sum(2)(6)(1));
 
-function evaluate(operation) {
-    return function (b) {
-        return function (c) {
-            if (operation === "sum")
-                return b + c;
-            else if (operation == "multiply")
-                return b * c;
-            else if (operation === "divide")
-                return b / c;
-            else if (operation == "substract")
-                return b - c;
-            else
-                return "Invalid operation";
-      }
-  }
-}
+// function evaluate(operation) {
+//     return function (b) {
+//         return function (c) {
+//             if (operation === "sum")
+//                 return b + c;
+//             else if (operation == "multiply")
+//                 return b * c;
+//             else if (operation === "divide")
+//                 return b / c;
+//             else if (operation == "substract")
+//                 return b - c;
+//             else
+//                 return "Invalid operation";
+//       }
+//   }
+// }
 
-console.log("answer is", evaluate("sum")(1)(2));
+// console.log("answer is", evaluate("sum")(1)(2));
 
-console.log(evaluate("multiply")(2)(3));
+// console.log(evaluate("multiply")(2)(3));
+
+
 
 // console.log(evaluate("asfa")(1)(3));
 
@@ -120,13 +122,14 @@ function add(a) {
  
  // converting function f(a,b,c,d)===>f(a)(b)(c)(d);
  
-function curry(func) {
+function curry(func){
     return function curriedFunc(...args){
         console.log("args is", args);
         if (args.length >= func.length)
             return func(...args);
         else {
             return function (...next) {
+               
                 return curriedFunc(...args,...next);
             };
         }

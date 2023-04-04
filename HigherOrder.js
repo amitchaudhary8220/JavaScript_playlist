@@ -1,10 +1,11 @@
-//a function, we takes function as an argument ,or return a function , is know as higher order function
+//a function, which takes function as an argument ,or return a function , is know as higher order function
 
 //and the function which is passed an as argument ,tht is known as call back function, and it is only possible because function are "first class citizen" in js
 
 
 
 const radius = [3, 1, 2, 4];
+
 // const area= radius.map((r) => r * r * Math.PI);
 // const circumference = radius.map((r) => 2 * Math.PI * r);
 // const diameter = radius.map((r) => 2 * r);
@@ -32,7 +33,7 @@ const diameter = (radius) => 2 * radius;
 
 Array.prototype.calculate = function(logic){
     // const arr = this;
-    // console.log("arr ", arr);
+    console.log("arr ", this);
     const output=[];
     for (let i = 0; i < this.length; i++)
         output.push(logic(this[i]));

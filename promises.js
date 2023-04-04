@@ -47,7 +47,7 @@ console.log("starting point");
 //             resolve("do this");
 //         else
 //             reject(new Error("don't do this"));
-        
+
 //     },100);
 // })
 
@@ -61,12 +61,12 @@ console.log("starting point");
 
 
 
-//directly resolving the promises
+// directly resolving the promises
 
 // const data = Promise.resolve("do this task");
 
-//here we have seen that we got our promise fullfilled instantly ,because here we have resolved the promise
-//but output would be asynchrnous
+// // here we have seen that we got our promise fullfilled instantly ,because here we have resolved the promise
+// // but output would be asynchrnous
 
 // console.log(data);
 // data.then((res) => {
@@ -77,7 +77,7 @@ console.log("starting point");
 // console.log(data);
 // data.then((res) => {
 //     console.log(res);
-    
+
 // }).catch((err) => {
 //     console.log(err);
 // })
@@ -90,7 +90,7 @@ function wakeUp(data) {
             resolve(`its ${data} am please wake up`)
         })
     },1000);
-  
+
 }
 function exercise(data) {
     return new Promise((resolve, reject) => {
@@ -98,7 +98,7 @@ function exercise(data) {
             reject(`its ${data}am please do the exercise`);
         }, 1000);
     })
-    
+
 
 }
 function breakfast(data) {
@@ -109,7 +109,7 @@ function breakfast(data) {
 
         }, 10);
     })
-   
+
 
 }
 
@@ -190,7 +190,7 @@ function breakfast(data) {
 //     exercise("6:30"),
 //         breakfast("7:30")
 // ]).then((res) => {
-//     console.log(res);
+//     console.log('res',res);
 // }).catch((err) => {
 //     console.log(err);
 // })
@@ -245,27 +245,31 @@ function breakfast(data) {
 //output
 
 //then this case when promise will be intialized  so js engine will look for synchrnous code inside the promise and print it
-//like here console.log(1) is synchronous code
+//like here console.log(1) and console.log(3) is synchronous code --they will be printed before promise result will be printed
 
 
 // const promies1 = new Promise((resolve, reject) => {
 //     console.log(1);
-//     // resolve(2);
+//     resolve(2);
 //     console.log(3);
 // });
-//until and unless promise will not be resolved then function will not execute
-//in promise1 if don't resolve it so this "then" will not execute
+// // until and unless promise will not be resolved 'then' function will not execute
+// // in promise1 if don't resolve it so this "then" will not execute
 
 // promies1.then((res) => {
 //     console.log(res);
 
 // })
 
+//if there will be no resolve function ,then 'then' function will not execute if it is written
+
+
 
     // / output
 //starting point
 
 //1
+//3
 //stop
 //2
 
@@ -297,38 +301,55 @@ function breakfast(data) {
 //stop
 //2
 
-function job(state) {
-    return new Promise(function (resolve, reject) {
-        if (state) {
-            resolve("success");
-        }
-        else {
-            reject("error");
-        }
-    });
-}
-
-let promise = job(true);
-
-// promise.then((data) => {
-//     console.log(data);
-//     return job(false);
-// })
-//     .catch((err) => {
-//         console.log(err);
-
-//         //erro caught will be treated as resolve
-
-//         return "Error caught";
-//     })
-//     .then((data) => {
-//         console.log(data);
-//         return job(true);
-//     })
-//     .catch((err) => {
-//         console.log(err);
+// function job() {
+//     return new Promise((resolve, reject) => {
+//         reject();
 //     });
+// }
 
+// let promise = job();
+
+// promise.then(() => {
+//     console.log("success 1");
+// }).then(() => {
+//     console.log("sucess 2");
+// }).then(() => {
+//     console.log("sucess 3");
+// }).catch(() => {
+//     console.log("error 1");
+
+// }).then(() => {
+//     console.log("sucess 4");
+// })
+
+//after catch block ,all then will be executed
+
+// function job(state) {
+//     return new Promise((resolve, reject) => {
+//         if (state)
+//             resolve("success");
+//         else
+//             reject("failed");
+//     })
+// }
+
+// let promise = job(true);
+
+// promise.then((res) => {
+//     console.log(res);
+//     return job(false);
+// }).catch((err) => {
+//     console.log(err);
+
+//     return "Error caught" //it will be treated as resolve or success
+
+// }).then((data) => {
+//     console.log(data);
+
+//     return job(true);
+// }).catch((err) =>
+//    { console.log(err);}
+//     );
 
 
 //output
@@ -350,7 +371,7 @@ let promise = job(true);
 
 //         }
 //         return job(true);
-    
+
 //     })
 //     .then((data) => {
 //         console.log(data);
@@ -369,7 +390,7 @@ let promise = job(true);
 //     })
 //     .then((data) => {
 //         console.log(data);     //error caught
-//         return new Error("test");  //it is also a resolved promise or normal test ,it will inside then
+//         return new Error("test");  //it is also a resolved promise or normal test ,it will go inside then
 
 //     })
 //     .then((data) => {
@@ -379,34 +400,41 @@ let promise = job(true);
 //         console.log("error", data.message);
 //     });
 
-//create a promise called firstPromise which will resolve to a text called firstPromise
+//create a promise called firstPromise which will resolve to a text called first--means inside resolve function pass "first" as an argument
 
-//create another promise called second promise which will resove first promise which we have created earlier
-
-
-//we will resolve our second  promise output to which we to pass to 1st promise then print first promise
+//create another promise called second promise which will resove firstpromise which we have created earlier
+//then we will resolve our secondPromise,, and output of which we have to pass to the first promise then print the first promise
 
 
 // const firstPromise = new Promise((resolve, reject) => {
 //     resolve("first!");
 // })
-// // console.log("firstPromise", firstPromise);
 
 // const secondPromise = new Promise((resolve, reject) => {
 //     resolve(firstPromise);
-// });
+    
+// })
 
-// console.log("secondPromise", secondPromise);
 
 // secondPromise.then((res) => {
+//     // console.log(res);
 //     return res;
+// }).then((res) => {
+//     console.log(res);
 // })
-//     .then((res) => {
-//         console.log(res);
-// })
+
+
+
+
+
 
 
 //rewrite using async await
+
+
+
+
+
 
 // function loadJson(url) {
 //     return fetch(url).then((response) => {
@@ -442,28 +470,28 @@ let promise = job(true);
 
 //shift() return the current element of the array and delete it from the array
 
-// function proRecurse(funcPromises) {
-//     if (funcPromises.length == 0) return;
-//     const currentPromise = funcPromises.shift();
-//     currentPromise
-//         .then((res) => {
-//         console.log(res);
-//     })
-//         .catch((err) => {
-//         console.log(err);
-//     })
+function proRecurse(funcPromises) {
+    if (funcPromises.length == 0) return;
+    const currentPromise = funcPromises.shift();
+    currentPromise
+        .then((res) => {
+        console.log(res);
+    })
+        .catch((err) => {
+        console.log(err);
+    })
 
-//     proRecurse(funcPromises);
+    proRecurse(funcPromises);
      
    
 
-// }
+}
 
-// proRecurse([
-//     wakeUp("6:00"),
-//     exercise("6:30"),
-//     breakfast("7:00"),
-// ]);
+proRecurse([
+    wakeUp("6:00"),
+    exercise("6:30"),
+    breakfast("7:00"),
+]);
 
 
 

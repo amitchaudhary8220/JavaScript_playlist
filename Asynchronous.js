@@ -31,6 +31,8 @@ function d() {
     console.log("inside d");
 }
 
+c(d);
+
 let currentTime = new Date().getTime();
 let endTime = currentTime;
 while (endTime <= currentTime + 10000) {

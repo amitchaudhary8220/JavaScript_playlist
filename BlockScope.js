@@ -1,6 +1,7 @@
 //this let is created in script and it has script scope
 var g = 12;
-let a = 100;
+let a = 50;
+
 {
      //this let has block scope
     let a = 10;
@@ -16,8 +17,9 @@ let a = 100;
 }
 
 function hello() {
-   
+   console.log(this)
     console.log("hello");
+    console.log("a", a);
     let z = 10;
     var v = 12;
     const l = 15;
@@ -27,6 +29,6 @@ function hello() {
 }
 
 hello();
-console.log(v); //it will throw error 
+// console.log(v); //it will throw error 
 console.log(b);
 console.log(a);

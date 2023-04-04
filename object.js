@@ -9,6 +9,7 @@ console.log('program starting point');
 //     "like this video": true,
 
 // }
+
 // user.name = "ankit";
 
 //deleting
@@ -24,7 +25,7 @@ console.log('program starting point');
 //below in function a is local variable
 
 
-// const func = (function (b) {
+// const func = (function (b){
 //     var a = 10;
 //     delete a;
 //     delete b;
@@ -119,7 +120,7 @@ console.log('program starting point');
 
 // const strObj = JSON.stringify(user);
 
-// console.log(strObj);
+// console.log("converted string",strObj);
 // console.log(JSON.parse(strObj));
 
 // //where we use JSON.stringify and JSON.parse --we use it in localStroarge , because in localStroage object is stored int the form of string
@@ -132,7 +133,7 @@ console.log('program starting point');
 
 // console.log(typeof "amit");
 
-//const a = [..."amit"] //it would return an array of string element
+// const a = [..."amit"] //it would return an array of string element
 
 
 // console.log(a);
@@ -177,15 +178,15 @@ console.log('program starting point');
 // };
 // const name = "Amit chaudhary";
 
-// //here name already exists , so rename name variable , use :
-// const {name:myName} = user;
+// // //here name already exists , so rename name variable , use :
+// const {name:myName} = user;  //renaming key when destructuring object
 // console.log(myName)
 
 
 
-//nested destructruing
+// //nested destructruing
 
-//for rename we use : but for nested destructruing again use {}
+// //for rename we use : but for nested destructruing again use {}
 
 // const { fullName: { first } } = user;
 // console.log(first);
@@ -203,10 +204,11 @@ console.log('program starting point');
 // console.log(c);
 
 
+
 // console.log({ a: 1 } == { a: 1 });
 // console.log({ a: 1 } === { a: 1 });
 
-//here both are independent and both objectsare pointing to different memory location
+//here both are independent and both objectshare pointing to different memory location
 
 
 ///object are only equal when they are refrencing the same area in the memory
@@ -215,10 +217,11 @@ console.log('program starting point');
 // let person = { name: "amit" };
 // const member = [person];
 // person = null;
-// // console.log(member[0].name);
+// console.log(member[0].name);
 // console.log(member);
 
 // const value = { number: 10 };
+
 // const multiply = (x = { ...value }) => {
 //     console.log((x.number *= 2));
 // };
@@ -228,26 +231,26 @@ console.log('program starting point');
 // multiply(value);
 
 
-function changeAgeAndReference(person) { //here person is also referencing to personObj1 , so it will modify the personObj1
+// function changeAgeAndReference(person) { //here person is also referencing to personObj1 , so it will modify the personObj1
 
-    person.age = 25;
+//     person.age = 25;
 
-    //now it is assigned a new object 
-    person = {
-        name: "John",
-        age: 50,
-    };
-    return person;
-}
+//     //now it is assigned a new object 
+//     person = {
+//         name: "John",
+//         age: 50,
+//     };
+//     return person;
+// }
 
-const personObj1 = {
-    name: "Alex",
-    age: 30,
-};
+// const personObj1 = {
+//     name: "Alex",
+//     age: 30,
+// };
 
-const personObj2 = changeAgeAndReference(personObj1);
-console.log(personObj1); //it si changed -->name:Alex ,age -25
-console.log(personObj2); //name:John, age 50
+// const personObj2 = changeAgeAndReference(personObj1);
+// console.log(personObj1); //it si changed -->name:Alex ,age -25
+// console.log(personObj2); //name:John, age 50
  
 
 //what is shallow copty and deep copy

@@ -1,30 +1,30 @@
 console.log("start");
 
-function z() {
-    var b = 100;
-    function x() {
-        var a = 10;
-        console.log("inside x");
-    function y() {
-        console.log(a,b);
+// function z() {
+//     var b = 100;
+//     function x() {
+//         var a = 10;
+//         console.log("inside x");
+//     function y() {
+//         console.log(a,b);
         
-    }
+//     }
 
-    return y;
-    }
-     return x();
-}
+//     return y;
+//     }
+//      return x();
+// }
  
-var func = z();
-console.log(func);
-func();
+// var func = z();
+// console.log(func);
+// func();
 
 //when we are returning the function y , its closure is also getting returned and its closures are closure(x) and closure (z) , thats why if  we again this function we will be having the access of its parent's lexical  envirnoment  means we can access the varibale of its parent
 
 
-// closure is the combination of functio and its lexical envirnoment
+// closure is the combination of function and its lexical envirnoment
 
-//when we return a function its closure it is also get returned
+//when we return a function its closure is also get returned
 
 // a closure is created everytime , a function is created
 
@@ -55,6 +55,7 @@ func();
 
 //how to optimize time with closure
 
+
 // function find(index) {
 //     let a = [];
 //     for (let i = 0; i < 1000000; i++){
@@ -72,7 +73,7 @@ func();
 // console.timeEnd("44");
 
 
-//optimizing above code
+// // optimizing above code
 
 // function find() {
 //     let a = [];
@@ -95,7 +96,7 @@ func();
 
 
 
-//blockscope and setTimeout
+// blockscope and setTimeout
 
 // function a() {
 //     for (var i = 0; i < 5; i++){
@@ -116,8 +117,8 @@ func();
 
 
 
-//how would you use a closure to create a private counter
-//it is recommed to put undersocre'_' before private variable ,not necessary
+// how would you use a closure to create a private counter
+// it is recommed to put undersocre'_' before private variable ,not necessary
 
 
 // function counter() {
@@ -158,7 +159,8 @@ func();
 //             console.log("public");
 //             // privateMethod();
 //         }
-//     }}
+//     }
+// }
 // )();
 // Module.publicMethod();
 
@@ -192,12 +194,13 @@ func();
 
 // function once(func, context) {
 //     let ran;
-//     return function () {
+//     return function (){
 //         if (func){
-//             ran = func.apply(context || this, arguments);
+//             func.apply(context || this, arguments);
+          
 //             func = null;
 //         }
-//         return null;
+//         return null ;
 //     }
 // }
 
@@ -217,34 +220,45 @@ func();
 
 //caching or memoize function
 
-// const memoize = (func,context) => {
-//     const result={};
-//     return function (...args) {
-//         let argCache = JSON.stringify(args);
-//         if(!result[argCache])
-//             result[argCache] = func.call(context || this, ...args);
+const memoize = (func, context) => {
+   
+    const result={};
+    return function (...args) {
+        let argCache = JSON.stringify(args);
+        if(!result[argCache])
+            result[argCache] = func.call(context || this, ...args);
+        //args provided here will be received as an argument in func
         
-//         return result[argCache];
+        
+        return result[argCache];
            
         
 
         
-//     }
-// }
+    }
+}
 
-// const clumsyProduct = (num1, nums2) => {
+// const clumsyProduct = (...args) => {
 //     for (let i = 1; i < 100000000; i++){ }
-//     return num1 * nums2;
+//     return args[0] * args[1];
     
 // }
 
-// const memoizeProduct = memoize(clumsyProduct);
-// console.time('6');
-// console.log(memoizeProduct(9999, 333));
-// console.timeEnd('6');
-// console.time('8');
-// console.log(memoizeProduct(9999, 333));
-// console.timeEnd('8');
+
+// or
+
+const clumsyProduct = (nums1, nums2) => {
+    for (let i = 1; i < 1000000; i++){ }
+    return nums1 * nums2;
+}
+
+const memoizeProduct = memoize(clumsyProduct);
+console.time('6');
+console.log(memoizeProduct(9999, 333));
+console.timeEnd('6');
+console.time('8');
+console.log(memoizeProduct(9999, 333));
+console.timeEnd('8');
 
 
 

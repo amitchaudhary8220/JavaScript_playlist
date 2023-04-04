@@ -3,6 +3,7 @@ const myName = {
     lastName: "chaudhary",
 
     //here this referes to the "myName" object 
+    
     // printName: function print(place,qualification, designation) {
     //     console.log(this.firstName, " ", this.lastName ,"is from ", place,qualification,designation );
         
@@ -44,7 +45,7 @@ printName.call(name2,"Delhi","b.tech","software developer")
 
 //apply function
 
-//apply function is same as call() function , but apply take argument inthe form list
+//apply function is same as call() function , but apply take argument in the form of  list
 
 console.log("using apply method");
 printName.apply(name2,["delhi" ,"b.tech" , "software developer"])
@@ -52,7 +53,7 @@ printName.apply(name2,["delhi" ,"b.tech" , "software developer"])
 
 //bind() method
 
-// in the case of bind , it does not call printName() method here , instead it returns the referce of this method , so that we can call it later , but it binded it with name2 or it bind the printName method with fuction which we passed in bind as argument
+// in the case of bind , it does not call printName() method here , instead it returns the referce of this method , so that we can call it later , but it is binded with name2 or it will bind  the printName method with fuction which we passed in bind as argument
 
 
 let printMyName = printName.bind(name2, "delhi", "b tech", "software developer");

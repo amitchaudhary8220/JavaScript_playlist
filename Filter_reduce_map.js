@@ -6,6 +6,7 @@ var b = a.filter(a => a % 2 == 0)
 
 // in this case map will return boolean valause if  we try to filter the original arrray with map
 var c = a.map(a => a % 2 == 0);
+console.log("c", c);
 
 var d = a.map(a => a * a);
 
