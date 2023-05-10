@@ -32,7 +32,8 @@ object2.__proto__ = object;
 
 //by doing above thing , we can access object property by object2
 
-//when we try to access any property first it will seach on top of main object ,if it doesn't find then it will search in proto of it, then proto of its proto ,and chain goes like this
+//when we try to access any property first it will search on top of main object ,if it doesn't 
+//find then it will search in proto of it, then proto of its proto ,and chain goes like this
 
 
 //this is called prototypal inheritance , object2 is inheriting the property  of object
@@ -41,7 +42,7 @@ object2.__proto__ = object;
 object2.getIntro();
 //like for above code , name will be printed from object2 and city will be printed form object
 
-console.log(object2.__proto__);
+console.log('object2 after prototyping',object2.__proto__);
 
 printName.call(object2);
 
