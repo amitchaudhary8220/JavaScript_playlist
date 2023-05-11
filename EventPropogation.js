@@ -1,3 +1,5 @@
+//event  propogation --> 1) event bubblign 2) event capturing
+
 //difference between event.target , event.currentTarget , this.target
 
 // document.querySelector("#grand").addEventListener("click", () => {
@@ -47,21 +49,17 @@ div.addEventListener("click", (event) => {
 });
 
 form.addEventListener(
-
   "click",
   (e) => {
     // e.stopPropagation();
     alert("target =" + e.currentTarget.tagName);
   },
   { capture: true }
-  
 );
 
 button.addEventListener("click", (e) => {
-
-    // e.stopPropagation(); 
+  // e.stopPropagation();
   alert("target ", e.currentTarget.tagName);
-
 });
 
 //how do we stop event bubbling or capturing  --> just provide event.stopPropogation() ,after which element we don't event bubbling to occur

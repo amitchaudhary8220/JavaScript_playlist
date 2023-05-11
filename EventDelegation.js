@@ -2,7 +2,6 @@
 
 //event delegation is possible becuase of event bubbling , event is trigerred from bottom to up
 
-
 // document.querySelector("#catories").addEventListener('click', (e) => {
 //     console.log(e.target.id);
 
@@ -10,11 +9,8 @@
 
 //         })
 
-document.querySelector("#categories").addEventListener('keyup',(e) => {
-    console.log(e);
-    if (e.target.dataset =="upper")
-        e.target.value = e.target.value.toUpperCase();
-    if (e.target.dataset == lower)
-        e.target.value = e.target.value.toLowerCase();
-
-})
+document.querySelector("#categories").addEventListener("keyup", (e) => {
+  console.log(e);
+  if (e.target.id == "data") e.target.value = e.target.value.toUpperCase();
+  if (e.target.id == "address") e.target.value = e.target.value.toLowerCase();
+});
