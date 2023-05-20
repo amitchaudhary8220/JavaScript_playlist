@@ -106,6 +106,8 @@ Function.prototype.myapply = function (context, args = []) {
 
 purchaseCar.myapply(car1, ["dollar", 12000]);
 
+let arr = [12, 34, 55, 2, 1];
+console.log("min value ", Math.min.myapply(null, arr));
 //bind polyfill
 
 Function.prototype.mybind = function (context, ...args) {

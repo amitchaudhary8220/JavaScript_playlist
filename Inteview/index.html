@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+      .responsive{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color:red;
+
+        height: 50vh;
+      }
+         
+       @media only screen and (min-width:780px) {
+
+        .responsive{
+            width:50%;
+            padding:10px;
+            
+        }
+       }
+       @media only screen and (max-width:780px) {
+
+        .responsive{
+            width:100%;
+            background-color:red;
+            padding:10px;
+            
+        }
+       }
+
+    </style>
+</head>
+<body>
+    <p>getting started with scope </p>
+    <!-- <div id="newdata">div</div>
+    <script src="scope.js"></script> -->
+
+    <!-- //what is user of label -->
+    <!-- css box model -->
+    <!-- position -->
+
+    <!-- what is response images -->
+    <div class="responsive">
+
+   
+    <form>
+        <label for="username">UserName:</label>
+        <input type="text" name="username" class="username" placeholder="user name">
+        <label for="password">Password</label>
+        <input type="password" placeholder="enter password" name="password" class="password">
+        <button>submit</button>
+    </form>
+</div>
+    
+</body>
+</html>
