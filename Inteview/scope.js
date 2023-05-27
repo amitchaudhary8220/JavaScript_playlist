@@ -95,6 +95,7 @@
 // };
 
 // const resolvePromise = async (data) => {
+
 //   console.log("going to start");
 
 //   const response = await fetchData(data);
@@ -126,21 +127,24 @@
 function EmployeeNames() {}
 
 EmployeeNames.prototype = {
+  //since names is in prototype so it will reflect in every object once we change it
   name: [],
   showNames: function () {
     return this.name;
   },
 };
 
-var e1 = new EmployeeNames();
+var e1 = new EmployeeNames("amit");
+
 e1.name.push("arr");
 
-console.log(e1.showNames());
+console.log("e1", e1.showNames());
 
-var e2 = new EmployeeNames();
-e2.name.push("arr");
+var e2 = new EmployeeNames("ankit");
 
-console.log(e2.showNames());
+e2.name.push("arw");
+
+console.log("e2", e2.showNames());
 
 //what is progressive web app - what is service worker
 
@@ -149,15 +153,20 @@ console.log(e2.showNames());
 //google powerhouse -- performance checing tool
 
 //using webpack can we set any roles like checking  css and js code to be a better coading standards   --es lint
-//what is web accessbility
+//what is web accessbility  -----Web accessibility means that websites, tools, and technologies are designed and developed so that people with disabilities can use them. More specifically, people can:
 
-//what double a and triple a standards
+// perceive, understand, navigate, and interact with the Web
+// contribute to the Web
+
+//what double AA and AAA standards -- this is related to web content accessbility guidline (wcag)
 
 //what is w3 standards
 
 //broweser storeage -- indexdb
 
 let arr = [10, 5, 6, 56, 23];
+
+
 // let minval = Math.min.apply(null, arr);
 // let minval = Math.min.m(null, arr);
 // console.log("minval is ", minval);
@@ -167,6 +176,8 @@ let arr = [10, 5, 6, 56, 23];
 
 //what is tag and element in html
 //difference between strong and bold tag
+
+
 
 function f1() {
   // console.log("x and y ", x, y);
@@ -187,6 +198,7 @@ function f1() {
   //   console.log("loop terminated");
 }
 
+
 f1();
 
 // let x = {},
@@ -199,3 +211,39 @@ f1();
 // x[l]=l;
 
 // console.log("x[z]", x[z],x);
+
+//call
+function Product(name, price) {
+  console.log("this is ", this);
+  this.name = name;
+  this.price = price;
+}
+
+function Food(name, price) {
+  console.log("this is ", this);
+  Product.call(this, name, price);
+  this.category = "food";
+}
+
+const newobj = new Food("cheese", 5);
+
+function Person() {
+  //here name is in its local scope , so it will always be created new for new object
+  this.name = [];
+}
+
+Person.prototype.showNames = function () {
+  return this.name;
+};
+
+const ff = new Person();
+ff.name.push("amit");
+console.log(ff.showNames());
+
+const f2 = new Person();
+f2.name.push("ehll0");
+console.log(f2.showNames());
+// console.log("newobj", newobj);
+
+// console.log("name is ", newobj.name);
+// Expected output: "cheese"

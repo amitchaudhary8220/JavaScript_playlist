@@ -1,4 +1,5 @@
 const myName = {
+  
   firstName: "amit",
   lastName: "chaudhary",
 

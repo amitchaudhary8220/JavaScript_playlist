@@ -4,31 +4,29 @@
 var counter = 0;
 
 function clikcHandler() {
-    console.log("clicked",counter++);
+  console.log("clicked", counter++);
 }
 
+let enhancedClickHandler = throttle(clikcHandler, 1000);
 
-let enhancedClickHandler=throttle(clikcHandler, 1000);
 function throttle(func, limit) {
+  //flag won't be reinitialized everytime since returing function formed a  closure with its outer envirnoment
 
-    //flag won't be reinitialized everytime since returing function formed a  closure with its outer envirnoment
-
-     let flag = true;
-    return function (){
-        console.log("getting clicked");
-        if (flag)
-        {
-            func();
-            flag = false;
-        }
-        setTimeout(() => {flag = true}, limit);
-        
+  let flag = true;
+  return function () {
+    console.log("getting clicked");
+    if (flag) {
+      func();
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, limit);
     }
-    
+  };
 }
 
-
-
-document.getElementById("buttonId").addEventListener("click", enhancedClickHandler);
+document
+  .getElementById("buttonId")
+  .addEventListener("click", enhancedClickHandler);
 
 // document.querySelector('button').addEventListener('click',enhancedClickHandler)
